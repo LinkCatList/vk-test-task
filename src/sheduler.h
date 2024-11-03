@@ -14,7 +14,7 @@ class TaskSheduler {
             Worker = std::thread(&TaskSheduler::workerThread, this);
         }
     
-        void AddTask(std::function<void()> task, std::time_t timer);
+        void Add(std::function<void()> task, std::time_t timestamp);
 
         ~TaskSheduler() {
             Stop.store(true);

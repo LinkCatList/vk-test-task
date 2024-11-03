@@ -1,8 +1,8 @@
 #include "sheduler.h"
 
-void TaskSheduler::AddTask(std::function<void()> task, std::time_t timer) {
+void TaskSheduler::Add(std::function<void()> task, std::time_t timestamp) {
     std::lock_guard<std::mutex> lock(Mutex);
-    Tasks.emplace(timer, std::move(task));
+    Tasks.emplace(timestamp, std::move(task));
     Cv.notify_one();
 }
 
